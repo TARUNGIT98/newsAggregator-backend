@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
+
 	<groupId>com.example</groupId>
 	<artifactId>news_aggregator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>news_aggregator</name>
 	<description>newsAggregator</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
+		<!-- DJL Dependencies using version 0.20.0 -->
+		<dependency>
+			<groupId>ai.djl</groupId>
+			<artifactId>api</artifactId>
+			<version>0.32.0</version>
+		</dependency>
+			<!-- DJL Model Zoo to load pre-trained models -->
+			<dependency>
+				<groupId>ai.djl</groupId>
+				<artifactId>model-zoo</artifactId>
+				<version>0.32.0</version>
+			</dependency>
+
+			<!-- DJL Tokenizers for text tokenization -->
+			<dependency>
+				<groupId>ai.djl.huggingface</groupId>
+				<artifactId>tokenizers</artifactId>
+				<version>0.32.0</version>
+			</dependency>
+
+
+		<!-- Spring Boot and other dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -42,7 +57,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -58,7 +72,32 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.commons</groupId>-->
+<!--			<artifactId>commons-math3</artifactId>-->
+<!--			<version>3.6.1</version>-->
+<!--		</dependency>-->
 	</dependencies>
+
+	<repositories>
+		<!-- You can keep the official DJL repository if accessible -->
+		<repository>
+			<id>djl-releases</id>
+			<url>https://repo.djl.ai/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 
 	<build>
 		<plugins>
@@ -68,5 +107,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

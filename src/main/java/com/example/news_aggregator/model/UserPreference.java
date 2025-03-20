@@ -2,15 +2,15 @@ package com.example.news_aggregator.model;
 
 import jakarta.persistence.*;
 
-@Entity // this means the class corresponds to a table in database
+@Entity
+@Table(name = "user_preference", uniqueConstraints = @UniqueConstraint(columnNames = "userId"))
 public class UserPreference {
-
-    @Id // primary key for this entity ante table ani
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // means that the database will generate the ID automatically using an auto-increment column.
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String userId;
-    private String preferredCategories; // comma separated list of categories.
+    private String preferredCategories;
 
     public UserPreference() { }
 
@@ -19,28 +19,23 @@ public class UserPreference {
         this.preferredCategories = preferredCategories;
     }
 
-    // Getters and Setters
-    public Long getId(){
+    // Getters and setters
+    public Long getId() {
         return id;
     }
-
-    public void setId(){
+    public void setId(Long id) {
         this.id = id;
     }
-
-    public String getUserId(){
+    public String getUserId() {
         return userId;
     }
-
-    public void setUserId(){
-        this.userId= userId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
     public String getPreferredCategories() {
         return preferredCategories;
     }
-
     public void setPreferredCategories(String preferredCategories) {
         this.preferredCategories = preferredCategories;
     }
-
 }
