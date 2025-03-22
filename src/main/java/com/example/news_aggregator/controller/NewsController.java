@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "https://ainewscurator.netlify.app/")
+@CrossOrigin(origins = "https://ainewscurator.netlify.app")
 @RestController
 @RequestMapping("/api/news")
 public class NewsController {
