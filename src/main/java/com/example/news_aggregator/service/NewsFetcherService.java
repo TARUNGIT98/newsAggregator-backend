@@ -17,9 +17,9 @@ public class NewsFetcherService {
     @Value("${newsapi.baseUrl}")
     private String baseUrl;
 
-    public List<Article> fetchNewsByCategory(String category) {
+    public List<Article> fetchNewsByCategoryAndCountry(String category , String country) {
         // Construct the URL with category and API key
-        String url = baseUrl + "?category=" + category + "&apiKey=" + apiKey;
+        String url = baseUrl + "?category=" + category +"&country=" + country + "&apiKey=" + apiKey;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<NewsResponse> responseEntity = restTemplate.getForEntity(url, NewsResponse.class);

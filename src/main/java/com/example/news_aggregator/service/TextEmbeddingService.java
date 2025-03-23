@@ -33,7 +33,10 @@ public class TextEmbeddingService
         model = ModelZoo.loadModel(criteria);
         predictor = model.newPredictor();
 
+        System.out.println("Model loaded: " + model.getName());
+
         tokenizer = HuggingFaceTokenizer.newInstance("bert-base-uncased");
+
     }
 
     public float[] getEmbedding(String text) throws TranslateException

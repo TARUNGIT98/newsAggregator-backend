@@ -32,8 +32,10 @@ public class NewsController {
 
     @GetMapping
     public ResponseEntity<List<Article>> getNews(@RequestParam String category,
-                                                 @RequestParam(required = false) String userId) {
-        List<Article> articles = newsFetcherService.fetchNewsByCategory(category);
+                                                 @RequestParam(required = false) String userId,
+                                                 @RequestParam(required = false, defaultValue = "us") String country)
+    {
+        List<Article> articles = newsFetcherService.fetchNewsByCategoryAndCountry(category,country);
         if (articles != null) {
             // Optionally summarize each article
             articles.forEach(article -> {
