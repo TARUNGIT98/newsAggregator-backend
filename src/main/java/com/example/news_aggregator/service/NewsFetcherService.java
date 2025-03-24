@@ -19,7 +19,7 @@ public class NewsFetcherService {
 
     public List<Article> fetchNewsByCategoryAndCountry(String category , String country) {
         // Construct the URL with category and API key
-        String url = baseUrl + "?category=" + category +"&country=" + country + "&apiKey=" + apiKey;
+        String url = String.format("%s?category=%s&country=%s&apiKey=%s", baseUrl, category, country, apiKey);
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<NewsResponse> responseEntity = restTemplate.getForEntity(url, NewsResponse.class);
