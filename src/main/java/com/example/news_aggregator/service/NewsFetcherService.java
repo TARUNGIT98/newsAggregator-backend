@@ -17,9 +17,17 @@ public class NewsFetcherService {
     @Value("${newsapi.baseUrl}")
     private String baseUrl;
 
-    public List<Article> fetchNewsByCategoryAndCountry(String category , String country) {
-        // Construct the URL with category and API key
-        String url = String.format("%s?category=%s&country=%s&apiKey=%s", baseUrl, category, country, apiKey);
+
+    public List<Article> fetchNewsByCategoryAndCountry(String category, String country) {
+        String url;
+        if ("us".equalsIgnoreCase(country)) {
+            // Use top-headlines for US
+            url = String.format("%s?category=%s&country=%s&apiKey=%s", baseUrl, category, country, apiKey);
+        } else {
+            // Use everything endpoint for non-US:
+            // This example constructs a query with both category and country keywords.
+            url = String.format("https://newsapi.org/v2/everything?q=%s+%s&apiKey=%s", category, country, apiKey);
+        }
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<NewsResponse> responseEntity = restTemplate.getForEntity(url, NewsResponse.class);
@@ -30,4 +38,5 @@ public class NewsFetcherService {
         }
         return null;
     }
+
 }
